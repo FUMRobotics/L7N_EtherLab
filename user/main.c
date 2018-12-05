@@ -89,6 +89,8 @@
 #define FREQUENCY 1000
 /* Period of motion loop, in nanoseconds */
 #define PERIOD_NS (NSEC_PER_SEC / FREQUENCY)
+/* Time to wait for a frame to be received. Determined by trial and error. */
+#define RECV_TIME 20000
 
 #ifdef DC
 
@@ -700,6 +702,7 @@ int main(int argc, char **argv)
 	#endif
 	
 	struct timespec cycleTime = {0, PERIOD_NS};
+	struct timespec recvTime = {0, RECV_TIME};
 	
 	clock_gettime(CLOCK_MONOTONIC, &wakeupTime);
 	
@@ -803,15 +806,11 @@ int main(int argc, char **argv)
 		printf("Execution time: %lu ns\n", execTime.tv_nsec);
 		#endif
 		
-		/* wakeupTime = wakeupTime + sleepTime */
-		timespec_add(&wakeupTime, &wakeupTime, &sleepTime);
-		/* Sleep to adjust the update frequency */
-		/* Note: TIMER_ABSTIME flag is key in ensuring the execution with the desired frequency.
-		   We don't have to conider the loop's execution time (as long as it doesn't get too close to 1 ms), 
-		   as the sleep ends cycleTime (=1 msecs) *after the start of the previous loop*.
-		*/
-		clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &wakeupTime, NULL);
-		/* Fetches received frames from the newtork device and processes the datagrams. */
+		/* Sleep until the frame is received by the network device. */
+		/* Note that the flag 0 means sleep interval is *relative* to the current value of the clock. */
+		clock_nanosleep(CLOCK_MONOTONIC, 0, &recvTime, NULL);
+		
+		/* Fetches received frames from the network device and processes the datagrams. */
 		ecrt_master_receive(master);
 		/* Evaluates the working counters of the received datagrams and outputs statistics,
 		   if necessary.
@@ -868,6 +867,15 @@ int main(int argc, char **argv)
 		#endif
 		
 		#endif
+		
+		/* wakeupTime = wakeupTime + sleepTime */
+		timespec_add(&wakeupTime, &wakeupTime, &sleepTime);
+		/* Sleep to adjust the update frequency */
+		/* Note: TIMER_ABSTIME flag is key in ensuring the execution with the desired frequency.
+		   We don't have to conider the loop's execution time (as long as it doesn't get too close to 1 ms), 
+		   as the sleep ends cycleTime (=1 msecs) *after the start of the previous loop*.
+		*/
+		clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &wakeupTime, NULL);
 		
 		/* Sends all datagrams in the queue.
 		   This method takes all datagrams that have been queued for transmission,
