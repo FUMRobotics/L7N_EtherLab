@@ -110,60 +110,80 @@
 void print_config(void)
 {
 
-	printf("**********\n");
+printf("**********\n");
 
-	#ifdef LOG
-	printf("LOG. NUMBER_OF_CYCLES = %d\n", NUMBER_OF_CYCLES);
-	#endif
+#ifdef LOG
+printf("LOG. NUMBER_OF_CYCLES = %d\n", NUMBER_OF_CYCLES);
+#endif
 
-	#ifdef CONFIG_PDOS
-	printf("CONFIG_PDOS\n");
-	#endif
+#ifdef CONFIG_PDOS
+printf("CONFIG_PDOS\n");
+#endif
 
-	#ifdef DC
-
-
-	printf("\nDC. ");
-
-	#ifdef SYNC_MASTER_TO_REF
-	printf("Mode: SYNC_MASTER_TO_REF\n");
-	#endif
-
-	#ifdef SYNC_REF_TO_MASTER
-	printf("Mode: SYNC_REF_TO_MASTER\n");
-	#endif
-
-	#ifdef CONFIG_DC 
-	printf("CONFIG_DC\n");
-	#endif
-
-	#ifdef MEASURE_PERF 
-	printf("MEASURE_PERF\n");
-	#endif
+#ifdef DC
 
 
-	#endif
+printf("\nDC. ");
 
-	#ifdef IPC
-	printf("\nIPC\n");
-	#endif
+#ifdef SYNC_MASTER_TO_REF
+printf("Mode: SYNC_MASTER_TO_REF\n");
+#endif
 
-	#ifdef SET_CPU_AFFINITY
-	printf("SET_CPU_AFFINITY\n");
-	#endif
+#ifdef SYNC_REF_TO_MASTER
+printf("Mode: SYNC_REF_TO_MASTER\n");
+#endif
+
+#ifdef CONFIG_DC 
+printf("CONFIG_DC\n");
+#endif
+
+#ifdef MEASURE_PERF 
+printf("MEASURE_PERF\n");
+#endif
 
 
-	#ifdef MEASURE_TIMING
-	printf("MEASURE_TIMING\n");
-	#endif
+#endif
 
-	#ifdef FREQUENCY
-	printf("FREQUENCY = %d\n", FREQUENCY);
-	#endif
+#ifdef IPC
+printf("\nIPC\n");
+#endif
 
-	printf("**********\n");
+#ifdef SET_CPU_AFFINITY
+printf("SET_CPU_AFFINITY\n");
+#endif
+
+
+#ifdef MEASURE_TIMING
+printf("MEASURE_TIMING\n");
+#endif
+
+#ifdef FREQUENCY
+printf("FREQUENCY = %d\n", FREQUENCY);
+#endif
+
+printf("**********\n");
+
+
 
 }
+
+
+
+
+float motor0_points[] = { 50.62154919, 50.62137813, 50.62018069, 50.61693061, 50.61060191, 50.60016933, 50.58460876, 50.56289793, 50.53401722, 50.49695055, 50.45068645, 50.39456035, 50.32927654, 50.25588084, 50.17541779, 50.0889296, 49.9974552, 49.90202952, 49.80368285, 49.70344041, 49.60232207, 49.59220011, 49.48995549, 49.38276785, 49.26705232, 49.14019993, 49.00048699, 48.8469848, 48.67946978, 48.49833402, 48.304496, 48.09931117, 47.88448225, 47.66196894, 47.43389661, 47.20246391, 46.96984898, 46.73811417, 46.50910928, 46.28437328, 46.06503471, 45.85171099, 45.64440689, 45.44241236, 45.24420011, 45.13359654, 44.93248172, 44.71402765, 44.47582818, 44.21786575, 43.9401211, 43.64257312, 43.32519887, 42.98797346, 42.63087004, 42.25385971, 41.85691148, 41.43999225, 41.00306671, 40.54609737, 40.06904453, 39.57186622, 39.05451826, 38.51695426, 37.95912564, 37.38098171, 36.78246973, 36.16353501, 35.52412106, 34.86416972, 34.18362138, 33.4824152, 32.76048937, 32.01778147, 31.25422876, 30.46976869, 29.66433934, 28.83787994, 27.99033155, 27.12163773, 26.2317453, 25.32060529, 24.38817383, 23.43441331, 22.4592936, 21.46279332, 20.44490142, 19.40561876, 18.34495997, 17.26295538, 16.15965327, 15.03512225, 13.88945387, 12.72276548, 11.53520339, 10.32694626, 9.09820877, 7.849245668, 6.580356063, 5.291888113, 3.984244043, 2.657885533, 1.313339474, -0.048795914, -1.427844583, -2.823042464, -4.229095378, -5.631967953, -7.028451409, -8.41774868, -9.799025517, -11.17141107, -12.53399873, -13.88584736, -15.22598274, -16.55339957, -17.86706369, -19.16591491, -20.44887015, -21.71482713, -22.96266857, -24.19126677, -25.3994888, -26.58620204, -27.75028025, -28.89060995, -30.00609718, -31.0956745, -32.15830818, -33.19300545, -34.19882172, -35.1748676, -36.12031351, -37.03156265, -37.90010336, -38.7251066, -39.50745995, -40.24814393, -40.94822176, -41.60882883, -42.23116201, -42.81646903, -43.36603806, -43.88118769, -44.36325745, -44.81359888, -45.23356732, -45.62451448, -45.98778166, -46.3246939, -46.63655474, -46.92464181, -47.19020312, -47.43445396, -47.65857448, -47.86370774, -48.05095837, -48.22139157, -48.37603258, -48.51586647, -48.64183823, -48.75485307, -48.855777, -48.94543751, -49.02462448, -49.09409106, -49.15455479, -49.20669865, -49.25117226, -49.28859299, -49.31954715, -49.34459122, -49.36425291, -49.37903241, -49.38940343, -49.39581428, -49.39868895, -49.39842811, -49.39541004, -49.38999156, -49.38250891, -49.3732786, -49.36259815, -49.35074684, -49.33798646, -49.32456187, -49.31070169, -49.29661884, -49.28251107, -49.26856145, -49.25493884, -49.24179826, -49.22928117, -49.21845523, -49.20495047, -49.18393457, -49.14958135, -49.09739152, -49.02408939, -48.927517, -48.80652439, -48.66085592, -48.49103354, -48.29823803, -48.08418975, -47.85103039, -47.60120716, -47.33736042, -47.06221579, -46.77848102, -46.48874797, -46.19539947, -45.90052078, -45.60581498, -45.31252185, -45.02133931, -44.73234678, -44.57071044, -44.28437146, -44.00183743, -43.72591421, -43.45937347, -43.20495582, -42.96537483, -42.74332161, -42.54147015, -42.36248319, -42.20901881, -42.08280677, -41.98187216, -41.90334273, -41.84437466, -41.80214572, -41.7738495, -41.75669055, -41.74788047, -41.74463486, -41.74417122};
+float motor1_points[] = { -17.39188584, -17.39229947, -17.39519489, -17.40305439, -17.41836181, -17.44360437, -17.48127519, -17.53387663, -17.6039243, -17.693952, -17.80651745, -17.94337633, -18.10297919, -18.28294863, -18.4809034, -18.69445292, -18.9211923, -19.15869784, -19.40452312, -19.6561956, -19.9112139, -19.9368034, -20.19366797, -20.45359724, -20.71777492, -20.98658311, -21.25968895, -21.53613285, -21.81441878, -22.09260736, -22.36841204, -22.63929906, -22.90259116, -23.15557533, -23.39561426, -23.6202613, -23.827378, -24.01525361, -24.18272533, -24.32929813, -24.45526302, -24.56181276, -24.6511543, -24.72661788, -24.79276326, -24.82799497, -24.89158623, -24.96023364, -25.03457907, -25.11449548, -25.1998448, -25.29047779, -25.38623388, -25.48694101, -25.59241547, -25.70246164, -25.81687185, -25.93542608, -26.05789174, -26.18402336, -26.31356235, -26.44623661, -26.58176025, -26.7198332, -26.86014082, -27.0023535, -27.14612621, -27.29109805, -27.43689181, -27.58311337, -27.72935127, -27.87517611, -28.02014002, -28.16377602, -28.30559749, -28.44509752, -28.58174832, -28.71500058, -28.84428287, -28.96900107, -29.0885377, -29.20225146, -29.30947663, -29.40952265, -29.50167367, -29.58518819, -29.65929885, -29.72321225, -29.7761089, -29.81714336, -29.84544448, -29.86011583, -29.8602364, -29.84486139, -29.81302337, -29.76373361, -29.69598376, -29.60874773, -29.50098402, -29.37163819, -29.21964583, -29.04393573, -28.8434334, -28.61706487, -28.36376086, -28.08246177, -27.77313964, -27.43826826, -27.07844186, -26.69377026, -26.2843946, -25.85048673, -25.39224838, -24.9099101, -24.40373001, -23.87399239, -23.32100607, -22.74510268, -22.14663488, -21.52597433, -20.88350977, -20.21964494, -19.53479653, -18.82939212, -18.10386812, -17.35866783, -16.59423943, -15.81103416, -15.0095045, -14.19010249, -13.35327808, -12.49947769, -11.62914487, -10.74554052, -9.857777896, -8.968434228, -8.078510111, -7.188955962, -6.300673893, -5.414519674, -4.531304743, -3.651798249, -2.776729096, -1.906787969, -1.042629336, -0.184873397, 0.665892021, 1.509109625, 2.344250895, 3.17081439, 3.988324132, 4.796328069, 5.594396613, 6.382121258, 7.159113276, 7.92500249, 8.679436114, 9.422077677, 10.15260601, 10.87071428, 11.57610916, 12.26850996, 12.94764788, 13.61326534, 14.26511528, 14.90296061, 15.52657366, 16.13573563, 16.7302362, 17.30987308, 17.87445162, 18.42378452, 18.95769148, 19.47599895, 19.97853988, 20.46515354, 20.93568529, 21.38998644, 21.82791414, 22.24933121, 22.6541061, 23.04211278, 23.41323067, 23.76734464, 24.10434492, 24.42412713, 24.72659223, 25.01164655, 25.27920177, 25.52917495, 25.76148854, 25.9760704, 26.17285686, 26.33770407, 26.51929168, 26.7047845, 26.89688977, 27.09731203, 27.30686165, 27.52556392, 27.75276866, 27.98726025, 28.22736757, 28.47107366, 28.71612452, 28.9601368, 29.20070408, 29.43550142, 29.66238829, 29.87950978, 30.08539609, 30.27906063, 30.46009686, 30.62877406, 30.78613241, 30.93407758, 31.07547513, 31.15348228, 31.29178566, 31.42867875, 31.56277922, 31.69270542, 31.81707617, 31.93451064, 32.04362808, 32.14304773, 32.23138869, 32.30726978, 32.36977074, 32.41981586, 32.45879006, 32.48807778, 32.50906318, 32.52313018, 32.53166257, 32.53604406, 32.53765829, 32.53788889};
+
+
+#define NUMBER_OF_motorpuls 524288
+
+
+int32_t degree_to_motor_position(float point) {
+	return (int32_t)(point * NUMBER_OF_motorpuls / 360);
+}
+float motor_to_degree_position(int32_t point) {
+	return (float)((float)point * (float)360 /  (float)NUMBER_OF_motorpuls);
+}
+
 
 /*****************************************************************************/
 /* Note: Anything relying on definition of SYNC_MASTER_TO_REF is essentially copy-pasted from /rtdm_rtai_dc/main.c */
@@ -700,6 +720,10 @@ int main(int argc, char **argv)
 	/* The slave time received in the current and the previous cycle */
 	uint32_t t_cur, t_prev;
 	#endif
+
+	
+	/* Return value of msgsnd. */
+	int retVal;
 	
 	struct timespec cycleTime = {0, PERIOD_NS};
 	struct timespec recvTime = {0, RECV_TIME};
@@ -786,12 +810,14 @@ int main(int argc, char **argv)
 	/* Cycle number. */
 	int i = 0;
 	#endif
-	
+	int test =100;
+	int counter =   0 ;
 	/* Wake up 1 msec after the start of the previous loop. */
 	sleepTime = cycleTime;
 	/* Update wakeupTime = current time */
 	clock_gettime(CLOCK_MONOTONIC, &wakeupTime);
-	
+	int position_number = 0;
+	int rev_position_number = sizeof(motor0_points) / sizeof(motor0_points[0]) - 1 ;
 	#ifdef LOG
 	while (i != NUMBER_OF_CYCLES)
 	#else
@@ -811,6 +837,7 @@ int main(int argc, char **argv)
 		clock_nanosleep(CLOCK_MONOTONIC, 0, &recvTime, NULL);
 		
 		/* Fetches received frames from the network device and processes the datagrams. */
+		/* Fetches received frames from the newtork device and processes the datagrams. */
 		ecrt_master_receive(master);
 		/* Evaluates the working counters of the received datagrams and outputs statistics,
 		   if necessary.
@@ -818,6 +845,7 @@ int main(int argc, char **argv)
 		   commented out 
 		*/
 		ecrt_domain_process(domain1);
+		
 		
 		#if defined(MEASURE_PERF) && defined(SYNC_REF_TO_MASTER)
 		ecrt_master_reference_clock_time(master, &t_cur);	
@@ -829,10 +857,50 @@ int main(int argc, char **argv)
 		actPos0 = EC_READ_S32(domain1_pd + offset_actPos0);
 		actPos1 = EC_READ_S32(domain1_pd + offset_actPos1);
 		
-		/* Process the received data */
-		targetPos0 = actPos0 + 5000;
-		targetPos1 = actPos1 - 5000;
+
+		/*
+			calculate the position 
+		*/
+
 		
+		
+		//targetPos0 = degree_to_motor_position(motor0_points[position_number]);
+		//targetPos0 =motor1_points[position_number];	
+		//position_number++;
+		//printf("actpos %ld \n" , actPos0);
+		/* Process the received data 524288*/
+		if(counter <= 50){
+			counter = counter + 1 ;
+			targetPos0 = 0 ;
+		}else {
+		
+			if(position_number < sizeof(motor0_points) / sizeof(motor0_points[0])){
+				//position_number = position_number %  (sizeof(motor0_points) / sizeof(motor0_points[0]));
+				//printf("pos value : %d \t actpos0 %ld\t dpos: %ld\n" , position_number , actPos0 , degree_to_motor_position(motor0_points[position_number]));
+				targetPos0 = degree_to_motor_position(motor0_points[position_number]);
+				position_number++;
+				if(position_number == sizeof(motor0_points) / sizeof(motor0_points[0] )){
+					rev_position_number =  sizeof(motor0_points) / sizeof(motor0_points[0]) - 1 ; 
+				}
+			}else{
+				//position_number = position_number %  (sizeof(motor0_points) / sizeof(motor0_points[0]));
+				//printf("rev value : %d \t actpos0 %ld\t dpos: %ld\n" , rev_position_number , actPos0 , degree_to_motor_position(motor0_points[rev_position_number]));
+				targetPos0 = degree_to_motor_position(motor0_points[rev_position_number]);
+				rev_position_number -- ;
+				if(rev_position_number < 0 ){
+					position_number = 0 ;
+				}
+				
+			}
+			
+			
+		}
+		//printf("pos val: %f\n" ,motor_to_degree_position(targetPos0));
+		//targetPos0= 0 ;
+		//test = 0;
+		targetPos1 = (actPos1  + 0 ) ; // / NUMBER_OF_motorpuls )  * NUMBER_OF_motorpuls - degree_to_motor_position(motor1_points[position_number]);
+		
+		//position_number++;
 		/* Write PDOs to the datagram */
 		EC_WRITE_U8  (domain1_pd + offset_controlWord0, 0xF );
 		EC_WRITE_S32 (domain1_pd + offset_targetPos0  , targetPos0);
@@ -867,7 +935,7 @@ int main(int argc, char **argv)
 		#endif
 		
 		#endif
-		
+
 		/* wakeupTime = wakeupTime + sleepTime */
 		timespec_add(&wakeupTime, &wakeupTime, &sleepTime);
 		/* Sleep to adjust the update frequency */
@@ -876,6 +944,7 @@ int main(int argc, char **argv)
 		   as the sleep ends cycleTime (=1 msecs) *after the start of the previous loop*.
 		*/
 		clock_nanosleep(CLOCK_MONOTONIC, TIMER_ABSTIME, &wakeupTime, NULL);
+
 		
 		/* Sends all datagrams in the queue.
 		   This method takes all datagrams that have been queued for transmission,
@@ -893,7 +962,7 @@ int main(int argc, char **argv)
 		#ifdef IPC
 		msg.actPos[0] = actPos0;
 		msg.actPos[1] = actPos1;
-	
+			
 		msg.targetPos[0] = targetPos0;
 		msg.targetPos[1] = targetPos1;
 		
@@ -920,6 +989,6 @@ int main(int argc, char **argv)
 	}
 	
 	ecrt_release_master(master);
-	
+
 	return 0;
 }

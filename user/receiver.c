@@ -62,6 +62,10 @@ void signal_handler(int sig)
 	kill(pid, SIGKILL);
 }
 
+#define NUMBER_OF_motorpuls 524288
+float motor_to_degree_position(int32_t point) {
+	return (float)((float)point * (float)360 /  (float)NUMBER_OF_motorpuls);
+}
 int main(int argc, char **argv)
 {
 
@@ -164,8 +168,10 @@ int main(int argc, char **argv)
 		}
 		
 		#ifdef LOG
-	        /* Write data to the log. */
-		fprintf(fp, "%ld\n", recvdMsg.updatePeriod);
+	        /* Write data to the log.*/
+
+
+		fprintf(fp, "%ld,%ld,%ld,%f,%f\n", recvdMsg.updatePeriod ,recvdMsg.actPos[0] ,recvdMsg.targetPos[0] ,motor_to_degree_position(recvdMsg.actPos[0]) , motor_to_degree_position(recvdMsg.targetPos[0]) );
 		#else
 		/* Print the message's data. */
 		printf("Motor 0 actual position: %d\n", recvdMsg.actPos[0]);
