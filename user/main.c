@@ -819,6 +819,11 @@ int main(int argc, char **argv)
 		*/
 		ecrt_domain_process(domain1);
 		
+		/* If we want to both measure update rate and the synchrnonization method is chosen as 
+		   "syncing reference clock to the master", we read the reference clock here. 
+		   If the synchronization mechanism is "syncing master to reference", later in this code we read the reference clock 
+		   as part of the algoritm. See sync_distributed_clocks(&t_cur);
+		*/
 		#if defined(MEASURE_PERF) && defined(SYNC_REF_TO_MASTER)
 		ecrt_master_reference_clock_time(master, &t_cur);	
 		#endif
@@ -914,6 +919,7 @@ int main(int argc, char **argv)
 		#endif
 		
 		#ifdef LOG
+		/* i is the number of cycles which we log their data. */
 		i = i + 1;
 		#endif
 	
