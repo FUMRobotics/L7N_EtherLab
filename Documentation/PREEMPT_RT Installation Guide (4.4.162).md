@@ -144,12 +144,13 @@ cd /usr/src/linux-4.4.162
 make clean
 `````
 In `usr/src`, delete any folder and .deb file with "4.4.162-rt175" in its name.
-In `/boot`, delete any file with "4.4.162-rt175" in its name.
-If you would like to change the configuration, 
+In `/boot`, delete any file with "4.4.162-rt175" in its name. 
+___
+**Note**: If you wish to change only the configuration, 
 ```bash
 make menuconfig
 ```
-and follow the next steps in this guide. 
+and proceed to the next steps accordingly.
 ___
 **Note**: If you want to undo the patch and configuration steps, instead of 
 ````bash
