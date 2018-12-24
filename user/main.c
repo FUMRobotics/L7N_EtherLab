@@ -564,6 +564,13 @@ int main(int argc, char **argv)
 	{0xFF}
 	};
 	
+		
+	if (ecrt_slave_config_pdos(drive0, EC_END, slave_0_syncs))
+	{
+		printf("Failed to configure slave 0 PDOs\n");
+		return -1;
+	}
+	
 	/* Slave 1's structures, obtained from $ethercat cstruct -p 1 */ 
 	ec_pdo_entry_info_t slave_1_pdo_entries[] = 
 	{
@@ -588,13 +595,6 @@ int main(int argc, char **argv)
 	{0xFF}
 	};
 	
-	
-	
-	if (ecrt_slave_config_pdos(drive0, EC_END, slave_0_syncs))
-	{
-		printf("Failed to configure slave 0 PDOs\n");
-		return -1;
-	}
 	
 	if (ecrt_slave_config_pdos(drive1, EC_END, slave_1_syncs))
 	{
