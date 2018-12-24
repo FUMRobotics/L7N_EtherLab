@@ -97,7 +97,7 @@ Now we should be able to compile the kernel. Note that since many, many device d
 ```bash
 make -j `getconf _NPROCESSORS_ONLN` deb-pkg 
 ```
-Extract RTAI-patched kernel's image and headers. (Note that the name of the debian packages might be different from below).  
+Extract PREEMPT_RT-patched kernel's image and headers. (Note that the name of the debian packages might be different from below).  
 ```bash
 cd /usr/src
 ```
@@ -107,7 +107,7 @@ dpkg -i linux-image-4.4.162-rt175_4.4.162-rt175-2_amd64.deb
 ```bash
 dpkg -i linux-headers-4.4.162-rt175_4.4.162-rt175-2_amd64.deb 
 ```
-The bootloader should be automatically configured. Therefore, at this point, if we reboot, we can choose the RTAI kernel from Advanced Options.  
+The bootloader should be automatically configured. Therefore, at this point, if we reboot, we can choose the rt kernel from Advanced Options.  
 If the new kernel is not added to the bootloader list, use `grub-customizer`
 ```bash
 add-apt-repository ppa:danielrichter2007/grub-customizer
