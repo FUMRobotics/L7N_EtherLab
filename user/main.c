@@ -873,8 +873,8 @@ int main(int argc, char **argv)
 		
 		#endif
 		
-		/* wakeupTime = wakeupTime + sleepTime */
-		timespec_add(&wakeupTime, &wakeupTime, &sleepTime);
+		/* wakeupTime = wakeupTime + cycleTime */
+		timespec_add(&wakeupTime, &wakeupTime, &cycleTime);
 		/* Sleep to adjust the update frequency */
 		/* Note: TIMER_ABSTIME flag is key in ensuring the execution with the desired frequency.
 		   We don't have to conider the loop's execution time (as long as it doesn't get too close to 1 ms), 
