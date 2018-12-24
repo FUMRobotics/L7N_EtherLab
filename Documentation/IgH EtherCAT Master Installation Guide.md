@@ -91,9 +91,10 @@ The field in front of `DEVICE_MODULES` is the name of the driver which the maste
 ```bash
 DEVICE_MODULES=“r8619"
 ```
-Press ctrl+x to save and exit.
+Press ctrl+x to save and exit.  
 __
-**Note:** If your network card isn't supported by EtherLab, or EtherLab doesn't support your kernel version, `DEVICE_MODULES=“generic"`.  
+
+**Note:** If your network card isn't supported by EtherLab, or EtherLab doesn't support your kernel version, `DEVICE_MODULES=“generic"`. 
 ___
 Copy the initilization script,
 ```bash
@@ -102,7 +103,7 @@ cd /opt/etherlab
 ```bash
 cp ./etc/init.d/ethercat /etc/init.d/
 ```
-Give execution permission (for starting and stopping the ethercat master module) to all groups,
+Give execution permission (for starting and stopping the ethercat master module) to root,
 ```bash
 sudo chmod a+x /etc/init.d/ethercat
 ```
